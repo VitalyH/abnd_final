@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Book Store App</string>
+    <string name="action_insert_dummy_data">Insert Dummy Data</string>
+    <string name="action_delete_all_entries">Delete All</string>
 </resources>
