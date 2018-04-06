@@ -49,6 +49,7 @@ public class StoreActivity extends AppCompatActivity {
         String[] projection = {
                 BookEntry._ID,
                 BookEntry.COLUMN_BOOK_NAME,
+                //BookEntry.COLUMN_BOOK_AUTHOR, // V2 Uncomment this if BookDb.Helper.DATABASE_VERSION = 2
                 BookEntry.COLUMN_BOOK_PRICE,
                 BookEntry.COLUMN_BOOK_QUANTITY,
                 BookEntry.COLUMN_BOOK_SUPPLIER,
@@ -70,7 +71,7 @@ public class StoreActivity extends AppCompatActivity {
             // Create a header in the Text View that looks like this:
             //
             // The books table contains <number of rows in Cursor> books.
-            // _id - name - price - quantity - supplier - phone
+            // _id - name - author -- price - quantity - supplier - phone
             //
             // In the while loop below, iterate through the rows of the cursor and display
             // the information from each column in this order.
@@ -78,6 +79,7 @@ public class StoreActivity extends AppCompatActivity {
             // Hardcoding text because this method is temporary and for testing purpose only
             displayView.append(BookEntry._ID + " - " +
                     BookEntry.COLUMN_BOOK_NAME + " - " +
+                    //BookEntry.COLUMN_BOOK_AUTHOR + " - " + // V2 Uncomment this if BookDb.Helper.DATABASE_VERSION = 2
                     BookEntry.COLUMN_BOOK_PRICE + " - " +
                     BookEntry.COLUMN_BOOK_QUANTITY + " - " +
                     BookEntry.COLUMN_BOOK_SUPPLIER + " - " +
@@ -86,6 +88,7 @@ public class StoreActivity extends AppCompatActivity {
             // Figure out the index of each column
             int idColumnIndex = cursor.getColumnIndex(BookEntry._ID);
             int nameColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_BOOK_NAME);
+            //int authorColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_BOOK_AUTHOR); // V2 Uncomment this if BookDb.Helper.DATABASE_VERSION = 2
             int priceColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_BOOK_PRICE);
             int quantityColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_BOOK_QUANTITY);
             int supplierColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_BOOK_SUPPLIER);
@@ -96,6 +99,7 @@ public class StoreActivity extends AppCompatActivity {
                 // Use that index to extract the String or Int value at the current row the cursor is on.
                 int currentID = cursor.getInt(idColumnIndex);
                 String currentName = cursor.getString(nameColumnIndex);
+                //String currentAuthor = cursor.getString(authorColumnIndex); // V2 Uncomment this if BookDb.Helper.DATABASE_VERSION = 2
                 int currentPrice = cursor.getInt(priceColumnIndex);
                 int currentQuantity = cursor.getInt(quantityColumnIndex);
                 String currentSupplier = cursor.getString(supplierColumnIndex);
@@ -103,6 +107,7 @@ public class StoreActivity extends AppCompatActivity {
                 // Display the values from each column of the current row in the cursor in the TextView
                 displayView.append(("\n" + currentID + " - " +
                         currentName + " - " +
+                        //currentAuthor + " - " + // V2 Uncomment this if BookDb.Helper.DATABASE_VERSION = 2
                         currentPrice + " - " +
                         currentQuantity + " - " +
                         currentSupplier + " - " +
@@ -124,6 +129,7 @@ public class StoreActivity extends AppCompatActivity {
         // Create a ContentValues object with a dummy book (the good one, btw).
         ContentValues values = new ContentValues();
         values.put(BookEntry.COLUMN_BOOK_NAME, "The Remains of the Day");
+        //values.put(BookEntry.COLUMN_BOOK_AUTHOR, "Kazuo Ishiguro"); // V2 Uncomment this if BookDb.Helper.DATABASE_VERSION = 2
         values.put(BookEntry.COLUMN_BOOK_PRICE, 7);
         values.put(BookEntry.COLUMN_BOOK_QUANTITY, 15);
         values.put(BookEntry.COLUMN_BOOK_SUPPLIER, "Amazon.com" );
