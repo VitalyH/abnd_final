@@ -49,7 +49,7 @@ public class BookDbHelper extends SQLiteOpenHelper {
         String SQL_CREATE_BOOKS_TABLE = "CREATE TABLE " + BookEntry.TABLE_NAME + " ("
                 + BookEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + BookEntry.COLUMN_BOOK_NAME + " TEXT NOT NULL, "
-                + BookEntry.COLUMN_BOOK_AUTHOR + " TEXT, " // V2 Uncomment this if BookDb.Helper.DATABASE_VERSION = 2
+               // + BookEntry.COLUMN_BOOK_AUTHOR + " TEXT, " // V2 Uncomment this if BookDb.Helper.DATABASE_VERSION = 2
                 + BookEntry.COLUMN_BOOK_PRICE + " INTEGER NOT NULL, "
                 + BookEntry.COLUMN_BOOK_QUANTITY + " INTEGER NOT NULL DEFAULT 1, "
                 + BookEntry.COLUMN_BOOK_SUPPLIER + " TEXT NOT NULL, "
@@ -62,6 +62,8 @@ public class BookDbHelper extends SQLiteOpenHelper {
     /**
      * This is called when the database needs to be upgraded.
      */
+    // More powerful and elegant implementation - https://riggaroo.co.za/android-sqlite-database-use-onupgrade-correctly/
+    // Waaaay other my head for now. Keeping link here for myself - something to try in the future.
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (oldVersion < 2) {
