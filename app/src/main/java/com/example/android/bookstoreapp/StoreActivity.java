@@ -13,7 +13,7 @@ import com.example.android.bookstoreapp.data.BookContract.BookEntry;
 import com.example.android.bookstoreapp.data.BookDbHelper;
 
 /**
- * Displays list of books that available in the our Store.
+ * Displays list of books that available in the Store.
  */
 
 public class StoreActivity extends AppCompatActivity {
@@ -75,6 +75,7 @@ public class StoreActivity extends AppCompatActivity {
             // In the while loop below, iterate through the rows of the cursor and display
             // the information from each column in this order.
             displayView.setText("The books table contains " + cursor.getCount() + " books.\n\n");
+            // Hardcoding text because this method is temporary and for testing purpose only
             displayView.append(BookEntry._ID + " - " +
                     BookEntry.COLUMN_BOOK_NAME + " - " +
                     BookEntry.COLUMN_BOOK_PRICE + " - " +
@@ -120,12 +121,12 @@ public class StoreActivity extends AppCompatActivity {
         // Gets the database in write mode
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
-        // Create a ContentValues object with a dummy book.
+        // Create a ContentValues object with a dummy book (the good one, btw).
         ContentValues values = new ContentValues();
         values.put(BookEntry.COLUMN_BOOK_NAME, "The Remains of the Day");
         values.put(BookEntry.COLUMN_BOOK_PRICE, 7);
         values.put(BookEntry.COLUMN_BOOK_QUANTITY, 15);
-        values.put(BookEntry.COLUMN_BOOK_SUPPLIER, "inHouse Publishing" );
+        values.put(BookEntry.COLUMN_BOOK_SUPPLIER, "Amazon.com" );
         values.put(BookEntry.COLUMN_BOOK_PHONE, "555-458-654");
 
         long newRowId = db.insert(BookEntry.TABLE_NAME, null, values);
