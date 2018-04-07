@@ -26,9 +26,9 @@ public class BookDbHelper extends SQLiteOpenHelper {
     /**
      * Database upgrade statement. Keep it next to the version for easier access.
      */
-
-    private static final String DATABASE_UPGRADE_TO_V2 = "ALTER TABLE "
-            + BookEntry.TABLE_NAME + " ADD COLUMN " + BookEntry.COLUMN_BOOK_AUTHOR + " TEXT ";
+    // Use it if you ever need to upgrade database.
+    //    private static final String DATABASE_UPGRADE_TO_V2 = "ALTER TABLE "
+    //            + BookEntry.TABLE_NAME + " ADD COLUMN " + BookEntry.COLUMN_BOOK_AUTHOR + " TEXT ";
 
     /**
      * Constructs a new instance of {@link BookDbHelper}.
@@ -49,8 +49,7 @@ public class BookDbHelper extends SQLiteOpenHelper {
         String SQL_CREATE_BOOKS_TABLE = "CREATE TABLE " + BookEntry.TABLE_NAME + " ("
                 + BookEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + BookEntry.COLUMN_BOOK_NAME + " TEXT NOT NULL, "
-               // + BookEntry.COLUMN_BOOK_AUTHOR + " TEXT, " // V2 Uncomment this if BookDb.Helper.DATABASE_VERSION = 2
-                + BookEntry.COLUMN_BOOK_PRICE + " INTEGER NOT NULL, "
+                + BookEntry.COLUMN_BOOK_PRICE + " DOUBLE NOT NULL, "
                 + BookEntry.COLUMN_BOOK_QUANTITY + " INTEGER NOT NULL DEFAULT 1, "
                 + BookEntry.COLUMN_BOOK_SUPPLIER + " TEXT NOT NULL, "
                 + BookEntry.COLUMN_BOOK_PHONE + " TEXT NOT NULL )";
@@ -66,8 +65,9 @@ public class BookDbHelper extends SQLiteOpenHelper {
     // Waaaay other my head for now. Keeping link here for myself - something to try in the future.
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        if (oldVersion < 2) {
-            db.execSQL(DATABASE_UPGRADE_TO_V2);
-        }
+    // Use it if you ever need to upgrade database.
+    //        if (oldVersion < 2) {
+    //            db.execSQL(DATABASE_UPGRADE_TO_V2);
+    //        }
     }
 }

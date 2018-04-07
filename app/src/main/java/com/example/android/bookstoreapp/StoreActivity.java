@@ -1,12 +1,15 @@
 package com.example.android.bookstoreapp;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.android.bookstoreapp.data.BookContract.BookEntry;
@@ -25,6 +28,16 @@ public class StoreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store);
+
+        // Setup FAB to open EditorActivity
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(StoreActivity.this, EditorActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // To access our database, we instantiate our subclass of SQLiteOpenHelper
         // and pass the context, which is the current activity.
@@ -100,7 +113,7 @@ public class StoreActivity extends AppCompatActivity {
                 int currentID = cursor.getInt(idColumnIndex);
                 String currentName = cursor.getString(nameColumnIndex);
                 //String currentAuthor = cursor.getString(authorColumnIndex); // V2 Uncomment this if BookDb.Helper.DATABASE_VERSION = 2
-                int currentPrice = cursor.getInt(priceColumnIndex);
+                double currentPrice = cursor.getDouble(priceColumnIndex);
                 int currentQuantity = cursor.getInt(quantityColumnIndex);
                 String currentSupplier = cursor.getString(supplierColumnIndex);
                 String currentPhone = cursor.getString(phoneColumnIndex);
@@ -130,10 +143,10 @@ public class StoreActivity extends AppCompatActivity {
         ContentValues values = new ContentValues();
         values.put(BookEntry.COLUMN_BOOK_NAME, "The Remains of the Day");
         //values.put(BookEntry.COLUMN_BOOK_AUTHOR, "Kazuo Ishiguro"); // V2 Uncomment this if BookDb.Helper.DATABASE_VERSION = 2
-        values.put(BookEntry.COLUMN_BOOK_PRICE, 7);
+        values.put(BookEntry.COLUMN_BOOK_PRICE, 7.77);
         values.put(BookEntry.COLUMN_BOOK_QUANTITY, 15);
         values.put(BookEntry.COLUMN_BOOK_SUPPLIER, "Amazon.com" );
-        values.put(BookEntry.COLUMN_BOOK_PHONE, "555-458-654");
+        values.put(BookEntry.COLUMN_BOOK_PHONE, "555458654");
 
         long newRowId = db.insert(BookEntry.TABLE_NAME, null, values);
     }
