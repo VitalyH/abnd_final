@@ -15,4 +15,5 @@
     <string name="hint_book_phone">Supplier phone</string>
     <string name="unit_book_price">EUR</string>
     <string name="unit_book_quantity">Units</string>
+    <string name="error_empty_field">Please fill in all fields!</string>
 </resources>

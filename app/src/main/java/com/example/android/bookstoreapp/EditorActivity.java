@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -44,7 +45,10 @@ public class EditorActivity extends AppCompatActivity {
      */
     private EditText mPhoneEditText;
 
-    private static boolean isNullInput = false;
+    /**
+     * Boolean variable which helps to check if any fields was left empty
+     */
+    private boolean isNullInput = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +56,8 @@ public class EditorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_editor);
 
         // Find all relevant views that we will need to read user input from
-        mNameEditText =  findViewById(R.id.edit_book_name);
-        mPriceEditText =  findViewById(R.id.edit_book_price);
+        mNameEditText = findViewById(R.id.edit_book_name);
+        mPriceEditText = findViewById(R.id.edit_book_price);
         mQuantityEditText = findViewById(R.id.edit_book_quantity);
         mSupplierEditText = findViewById(R.id.edit_book_supplier);
         mPhoneEditText = findViewById(R.id.edit_book_phone);
@@ -70,12 +74,28 @@ public class EditorActivity extends AppCompatActivity {
         String quantityString = mQuantityEditText.getText().toString().trim();
         String supplierString = mSupplierEditText.getText().toString().trim();
         String phoneString = mPhoneEditText.getText().toString().trim();
+
+        // Check empty fields
+        if (TextUtils.isEmpty(nameString)
+                || TextUtils.isEmpty(priceString)
+                || TextUtils.isEmpty(quantityString)
+                || TextUtils.isEmpty(supplierString)
+                || TextUtils.isEmpty(phoneString)) {
+            // Show Toast with error message
+            Toast.makeText(getApplicationContext(),
+                    getResources().getString(R.string.error_empty_field), Toast.LENGTH_LONG).show();
+            // Set to "true" and block exit activity in @Link onOptionsItemSelected
+            isNullInput = true;
+            return;
+        } else {
+            // Set to "false" if user filled in all fields
+            // We need this in case "if" above was triggered and isNullInput was set to true
+            isNullInput = false;
+        }
+
+        // Convert Strings
         double priceDouble = Double.parseDouble(priceString);
         int quantityInt = Integer.parseInt(quantityString);
-
-        if (nameString.matches("")) {
-            isNullInput = true;
-        }
 
         // Create database helper
         BookDbHelper mDbHelper = new BookDbHelper(this);
@@ -119,14 +139,14 @@ public class EditorActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             // Respond to a click on the "Save" menu option
             case R.id.action_save:
-                if (isNullInput) {
-                    // Save the book to database
-                    insertBook();
-                    // Exit activity
+                // Save the book to database
+                insertBook();
+                // Exit activity if all fields was filled in
+                if (!isNullInput) {
                     finish();
                     return true;
                 }
-            // Respond to a click on the "Delete" menu option
+                // Respond to a click on the "Delete" menu option
             case R.id.action_delete:
                 // Do nothing for now
                 return true;
