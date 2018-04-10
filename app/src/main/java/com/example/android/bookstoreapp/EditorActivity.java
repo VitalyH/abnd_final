@@ -1,5 +1,6 @@
 package com.example.android.bookstoreapp;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.LoaderManager;
 import android.content.ContentValues;
@@ -25,6 +26,10 @@ import com.example.android.bookstoreapp.data.BookContract.BookEntry;
 /**
  * Allows user to create a new book or edit an existing one.
  */
+
+// We are using Listener only as a marker of user actions.
+// No actual action need to be taken on click so we can suppress warning.
+@SuppressLint("ClickableViewAccessibility")
 
 public class EditorActivity extends AppCompatActivity implements
         LoaderManager.LoaderCallbacks<Cursor> {
@@ -154,10 +159,6 @@ public class EditorActivity extends AppCompatActivity implements
             return;
         }
 
-        // Convert Strings
-        double priceDouble = Double.parseDouble(priceString);
-        int quantityInt = Integer.parseInt(quantityString);
-
         // Check empty fields and do not allow proceed with them
         if (TextUtils.isEmpty(nameString)
                 || TextUtils.isEmpty(priceString)
@@ -180,8 +181,8 @@ public class EditorActivity extends AppCompatActivity implements
         // and book attributes from the editor are the values.
         ContentValues values = new ContentValues();
         values.put(BookEntry.COLUMN_BOOK_NAME, nameString);
-        values.put(BookEntry.COLUMN_BOOK_PRICE, priceDouble);
-        values.put(BookEntry.COLUMN_BOOK_QUANTITY, quantityInt);
+        values.put(BookEntry.COLUMN_BOOK_PRICE, Double.parseDouble(priceString));
+        values.put(BookEntry.COLUMN_BOOK_QUANTITY, Integer.parseInt(quantityString));
         values.put(BookEntry.COLUMN_BOOK_SUPPLIER, supplierString);
         values.put(BookEntry.COLUMN_BOOK_PHONE, phoneString);
 
@@ -254,6 +255,8 @@ public class EditorActivity extends AppCompatActivity implements
                 if (!mNullInput) {
                     finish();
                     return true;
+                } else {
+                    return false;
                 }
                 // Respond to a click on the "Delete" menu option
             case R.id.action_delete:

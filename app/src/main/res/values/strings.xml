@@ -8,7 +8,7 @@
     <string name="editor_insert_book_failed">Error with saving book</string>
     <string name="editor_update_book_successful">Book updated</string>
     <string name="editor_update_book_failed">Error with updating book</string>
-    <string name="editor_delete_book_successful">Pet deleted</string>
+    <string name="editor_delete_book_successful">Book deleted</string>
     <string name="editor_delete_book_failed">Error with deleting pet</string>
     <string name="unsaved_changes_dialog_msg">Discard your changes and quit editing?</string>
     <string name="discard">Discard</string>
