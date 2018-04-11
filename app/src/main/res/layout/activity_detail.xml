@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Layout for the editor -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_margin"
+    tools:context=".DetailActivity">
+
+    <!-- Books category
+    There is room for more (author, for example)
+    so we going to keep structure
+    -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Label -->
+        <TextView
+            style="@style/CategoryStyle"
+            android:text="@string/category_overview" />
+
+        <!-- Input fields -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp">
+
+            <!-- Name field -->
+            <TextView
+                android:id="@+id/detail_book_name"
+                style="@style/EditorFieldStyle"
+                android:hint="@string/hint_book_name"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Numbers category -->
+    <LinearLayout
+        android:id="@+id/detail_container_measurement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Label -->
+        <TextView
+            style="@style/CategoryStyle"
+            android:text="@string/category_numbers" />
+
+        <!-- Input fields -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2">
+
+                <!-- Price field -->
+                <TextView
+                    android:id="@+id/detail_book_price"
+                    style="@style/EditorFieldStyle"
+                    />
+
+                <!-- Units for price (EUR) -->
+                <TextView
+                    android:id="@+id/detail_label_price_units"
+                    style="@style/EditorUnitsStyle"
+                    android:text="@string/unit_book_price" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="2">
+
+                <!-- Quantity field -->
+                <TextView
+                    android:id="@+id/detail_book_quantity"
+                    style="@style/EditorFieldStyle"
+                     />
+
+                <!-- Units for quantity (units) -->
+                <TextView
+                    android:id="@+id/detail_label_quantity_units"
+                    style="@style/EditorUnitsStyle"
+                    android:text="@string/unit_book_quantity" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Supplier category -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Label -->
+        <TextView
+            style="@style/CategoryStyle"
+            android:text="@string/category_supplier" />
+
+        <!-- Input fields -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp">
+
+            <!-- Supplier name field -->
+            <TextView
+                android:id="@+id/detail_book_supplier"
+                style="@style/EditorFieldStyle"
+                 />
+
+            <!-- Supplier phone field -->
+            <TextView
+                android:id="@+id/detail_book_phone"
+                style="@style/EditorFieldStyle"
+                 />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

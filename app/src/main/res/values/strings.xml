@@ -4,6 +4,7 @@
     <string name="action_delete_all_entries">Delete All</string>
     <string name="editor_activity_title_new_book">Add a Book</string>
     <string name="editor_activity_title_edit_book">Edit Book</string>
+    <string name="detail_activity_title">Book\'s Details</string>
     <string name="editor_insert_book_successful">Book saved</string>
     <string name="editor_insert_book_failed">Error with saving book</string>
     <string name="editor_update_book_successful">Book updated</string>
@@ -18,6 +19,7 @@
     <string name="cancel">Cancel</string>
     <string name="action_save">Save</string>
     <string name="action_delete">Delete</string>
+    <string name="action_edit">Edit</string>
     <string name="category_overview">Book</string>
     <string name="category_numbers">Numbers</string>
     <string name="category_supplier">Supplier</string>

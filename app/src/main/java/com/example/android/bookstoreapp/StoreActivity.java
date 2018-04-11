@@ -65,8 +65,8 @@ public class StoreActivity extends AppCompatActivity implements
         bookListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                // Create new intent to go to {@link EditorActivity}
-                Intent intent = new Intent(StoreActivity.this, EditorActivity.class);
+                // Create new intent to go to {@link DetailActivity}
+                Intent intent = new Intent(StoreActivity.this, DetailActivity.class);
 
                 // Form the content URI that represents the specific book that was clicked on,
                 // by appending the "id" (passed as input to this method) onto the
@@ -78,7 +78,7 @@ public class StoreActivity extends AppCompatActivity implements
                 // Set the URI on the data field of the intent
                 intent.setData(currentBookUri);
 
-                // Launch the {@link EditorActivity} to display the data for the current book.
+                // Launch the {@link DetailActivity} to display the data for the current book.
                 startActivity(intent);
             }
         });
