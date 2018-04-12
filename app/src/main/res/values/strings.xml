@@ -5,6 +5,8 @@
     <string name="editor_activity_title_new_book">Add a Book</string>
     <string name="editor_activity_title_edit_book">Edit Book</string>
     <string name="detail_activity_title">Book\'s Details</string>
+    <string name="detail_activity_bellow_zero">Quantity should be > 0!</string>
+    <string name="detail_activity_no_phone">No phone app found! Get one from the Play Store!</string>
     <string name="editor_insert_book_successful">Book saved</string>
     <string name="editor_insert_book_failed">Error with saving book</string>
     <string name="editor_update_book_successful">Book updated</string>

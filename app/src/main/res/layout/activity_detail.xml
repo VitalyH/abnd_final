@@ -97,6 +97,8 @@
                     android:id="@+id/detail_label_quantity_units"
                     style="@style/EditorUnitsStyle"
                     android:text="@string/unit_book_quantity" />
+
+
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
@@ -133,5 +135,21 @@
                 style="@style/EditorFieldStyle"
                  />
         </LinearLayout>
+        <Button
+            android:id="@+id/detail_plus_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Plus"/>
+        <Button
+            android:id="@+id/detail_minus_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Minus"/>
+        <Button
+            android:id="@+id/detail_make_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Order"/>
+
     </LinearLayout>
 </LinearLayout>

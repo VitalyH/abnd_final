@@ -2,10 +2,13 @@ package com.example.android.bookstoreapp;
 
 import android.app.AlertDialog;
 import android.app.LoaderManager;
+import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,10 +16,13 @@ import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.bookstoreapp.data.BookContract.BookEntry;
+
+import java.util.List;
 
 /**
  * Allows the user to view details of the book, change quantity and initiate a call to the supplier.
@@ -60,6 +66,13 @@ public class DetailActivity extends AppCompatActivity implements
      */
     private TextView mPhoneDetailText;
 
+    /**
+     * Helping variables for buttons in this activity
+     */
+    int mQuantity;                      // Quantity of the books in the store
+    boolean mQuantityChanged = false;   // Check wherever quantity was changed at all
+    String mPhoneNumber;                // Phone number for using in the DIAL intent
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +112,8 @@ public class DetailActivity extends AppCompatActivity implements
                 Intent intent = new Intent(DetailActivity.this, EditorActivity.class);
                 // Set the URI on the data field of the intent
                 intent.setData(mCurrentBookUri);
+                // Update quantity before exiting
+                updateQuantity();
                 // Launch the {@link EditorActivity} to display the data for the current book.
                 startActivity(intent);
                 return true;
@@ -109,6 +124,8 @@ public class DetailActivity extends AppCompatActivity implements
                 return true;
             // Respond to a click on the "Up" arrow button in the app bar
             case android.R.id.home:
+                // Update quantity before exiting
+                updateQuantity();
                 // Continue with navigating up to parent activity
                 // which is the {@link StoreActivity}.
                 NavUtils.navigateUpFromSameTask(DetailActivity.this);
@@ -122,6 +139,8 @@ public class DetailActivity extends AppCompatActivity implements
      */
     @Override
     public void onBackPressed() {
+        // Update quantity before exiting
+        updateQuantity();
         super.onBackPressed();
     }
 
@@ -173,13 +192,84 @@ public class DetailActivity extends AppCompatActivity implements
             String supplier = cursor.getString(supplierColumnIndex);
             String phone = cursor.getString(phoneColumnIndex);
 
+            // Updating helping variables
+            mQuantity = quantity;
+            mPhoneNumber = phone;
+
             // Update the views on the screen with the values from the database
             mNameDetailText.setText(name);
-            mPriceDetailText.setText(Integer.toString(price));
-            mQuantityDetailText.setText(Integer.toString(quantity));
+            mPriceDetailText.setText(String.valueOf(price));
+            mQuantityDetailText.setText(String.valueOf(quantity));
             mSupplierDetailText.setText(supplier);
             mPhoneDetailText.setText(phone);
         }
+
+        // Buttons which change quantity
+        // For increasing quantity.
+        final TextView plusQuantity = findViewById(R.id.detail_plus_quantity);
+        plusQuantity.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                // Increase quantity of books by one
+                mQuantity++;
+                // Show new quantity
+                mQuantityDetailText.setText(String.valueOf(mQuantity));
+                // Change variable for @Link updateQuantity
+                mQuantityChanged = true;
+            }
+        });
+
+        // For decreasing quantity.
+        final TextView minusQuantity = findViewById(R.id.detail_minus_quantity);
+        minusQuantity.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                if (mQuantity > 0) {
+                    // Decrease quantity of books by one
+                    mQuantity--;
+                    // Show new quantity
+                    mQuantityDetailText.setText(String.valueOf(mQuantity));
+                    // Change variable for @Link updateQuantity
+                    mQuantityChanged = true;
+                    // Quantity couldn't be negative, so do not proceed and show user a warning
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            getString(R.string.detail_activity_bellow_zero),
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        // Button to make an order (phone call to the supplier)
+        final TextView makeOrder = findViewById(R.id.detail_make_order);
+        makeOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Use DIAL instead of CALL so user have an opportunity to confirm the call
+                // Also we need less permissions on OS level this way
+                Intent dialIntent = new Intent(Intent.ACTION_DIAL,
+                        Uri.fromParts("tel", mPhoneNumber, null));
+
+                // Check whatever is an activity available that can respond to the intent
+                // (Phone app usually installed but if not, app will crash)
+                PackageManager packageManager = getPackageManager();
+                List<ResolveInfo> activities = packageManager.queryIntentActivities(dialIntent,
+                        PackageManager.MATCH_DEFAULT_ONLY);
+                boolean isIntentSafe = activities.size() > 0;
+
+                if (isIntentSafe) {
+                    // Send the intent to launch a new activity
+                    startActivity(dialIntent);
+                } else {
+                    // If there is no phone app installed
+                    // Show Toast message with warning
+                    Toast.makeText(getApplicationContext(),
+                            getString(R.string.detail_activity_no_phone), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     @Override
@@ -238,5 +328,28 @@ public class DetailActivity extends AppCompatActivity implements
 
         // Close the activity
         finish();
+    }
+
+    /**
+     * Update quantity of the book
+     */
+    private void updateQuantity() {
+        // Check if mQuantity was changed
+        if (!mQuantityChanged) {
+            // Since field wasn't modified, we can return early without updating anything
+            return;
+        }
+
+        // Read from the field
+        // Create a ContentValues object
+        ContentValues values = new ContentValues();
+        values.put(BookEntry.COLUMN_BOOK_QUANTITY,
+                Integer.parseInt(mQuantityDetailText.getText().toString()));
+
+        // Update the book with content URI: mCurrentBookUri
+        // and pass in the new ContentValues. Pass in null for the selection and selection args
+        // because mCurrentBookUri will already identify the correct row in the database that
+        // we want to modify.
+        getContentResolver().update(mCurrentBookUri, values, null, null);
     }
 }
