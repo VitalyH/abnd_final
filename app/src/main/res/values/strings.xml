@@ -36,4 +36,6 @@
     <string name="empty_view_title_text">It\'s a bit empty here&#8230;</string>
     <string name="empty_view_subtitle_text">Get started by adding a book</string>
 
+    <!-- Detail View Strings -->
+
 </resources>

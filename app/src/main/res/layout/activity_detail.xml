@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- Layout for the editor -->
+<!-- Layout for the Book's Details -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,147 +9,148 @@
     android:padding="@dimen/activity_margin"
     tools:context=".DetailActivity">
 
-    <!-- Books category
-    There is room for more (author, for example)
-    so we going to keep structure
-    -->
-
-    <LinearLayout
+    <!-- Title -->
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:padding="@dimen/detail_view_standard_margin">
 
         <!-- Label -->
         <TextView
-            style="@style/CategoryStyle"
-            android:text="@string/category_overview" />
+            android:id="@+id/detail_title_label"
+            style="@style/DetailLabelStyle"
+            android:layout_alignBaseline="@id/detail_book_name"
+            android:text="Title" />
 
-        <!-- Input fields -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:orientation="vertical"
-            android:paddingStart="4dp"
-            android:paddingEnd="4dp">
+        <!-- Field -->
+        <TextView
+            android:id="@+id/detail_book_name"
+            style="@style/DetailFieldStyle"
+            android:layout_toEndOf="@id/detail_title_label" />
+    </RelativeLayout>
 
-            <!-- Name field -->
-            <TextView
-                android:id="@+id/detail_book_name"
-                style="@style/EditorFieldStyle"
-                android:hint="@string/hint_book_name"
-                />
-        </LinearLayout>
-    </LinearLayout>
+    <!-- Line between views -->
+    <View style="@style/DetailLineStyle" />
 
-    <!-- Numbers category -->
-    <LinearLayout
-        android:id="@+id/detail_container_measurement"
+    <!-- Price -->
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:padding="@dimen/detail_view_standard_margin">
 
         <!-- Label -->
         <TextView
-            style="@style/CategoryStyle"
-            android:text="@string/category_numbers" />
+            android:id="@+id/detail_price_label"
+            style="@style/DetailLabelStyle"
+            android:layout_alignBaseline="@id/detail_book_price"
+            android:text="Price" />
 
-        <!-- Input fields -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:orientation="vertical"
-            android:paddingStart="4dp"
-            android:paddingEnd="4dp">
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="2">
-
-                <!-- Price field -->
-                <TextView
-                    android:id="@+id/detail_book_price"
-                    style="@style/EditorFieldStyle"
-                    />
-
-                <!-- Units for price (EUR) -->
-                <TextView
-                    android:id="@+id/detail_label_price_units"
-                    style="@style/EditorUnitsStyle"
-                    android:text="@string/unit_book_price" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="2">
-
-                <!-- Quantity field -->
-                <TextView
-                    android:id="@+id/detail_book_quantity"
-                    style="@style/EditorFieldStyle"
-                     />
-
-                <!-- Units for quantity (units) -->
-                <TextView
-                    android:id="@+id/detail_label_quantity_units"
-                    style="@style/EditorUnitsStyle"
-                    android:text="@string/unit_book_quantity" />
+        <!-- EUR -->
+        <TextView
+            android:id="@+id/detail_price_label_euro"
+            style="@style/DetailEurStyle"
+            android:layout_alignBaseline="@id/detail_book_price"
+            android:layout_toEndOf="@id/detail_price_label"
+            android:text="€" />
 
 
-            </RelativeLayout>
-        </LinearLayout>
-    </LinearLayout>
+        <!-- Field -->
+        <TextView
+            android:id="@+id/detail_book_price"
+            style="@style/DetailPriceFieldStyle"
+            android:layout_toEndOf="@id/detail_price_label_euro" />
+    </RelativeLayout>
 
-    <!-- Supplier category -->
-    <LinearLayout
+    <!-- Line between views -->
+    <View style="@style/DetailLineStyle" />
+
+    <!-- Quantity -->
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:padding="@dimen/detail_view_standard_margin">
 
         <!-- Label -->
         <TextView
-            style="@style/CategoryStyle"
-            android:text="@string/category_supplier" />
-
-        <!-- Input fields -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:orientation="vertical"
-            android:paddingStart="4dp"
-            android:paddingEnd="4dp">
-
-            <!-- Supplier name field -->
-            <TextView
-                android:id="@+id/detail_book_supplier"
-                style="@style/EditorFieldStyle"
-                 />
-
-            <!-- Supplier phone field -->
-            <TextView
-                android:id="@+id/detail_book_phone"
-                style="@style/EditorFieldStyle"
-                 />
-        </LinearLayout>
+            android:id="@+id/detail_quantity_label"
+            style="@style/DetailLabelStyle"
+            android:layout_alignBaseline="@id/detail_book_quantity"
+            android:text="Quantity" />
+        <!-- Plus Button -->
         <Button
-            android:id="@+id/detail_plus_quantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Plus"/>
-        <Button
+            style="@style/DetailQuantityButtonStyle"
             android:id="@+id/detail_minus_quantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Minus"/>
-        <Button
-            android:id="@+id/detail_make_order"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Order"/>
+            android:layout_alignBaseline="@id/detail_book_quantity"
+            android:layout_toEndOf="@id/detail_quantity_label"
+            android:text="-" />
 
-    </LinearLayout>
+        <!-- Field -->
+        <TextView
+            android:id="@+id/detail_book_quantity"
+            style="@style/DetailFieldStyle"
+            android:layout_toEndOf="@id/detail_minus_quantity" />
+
+        <!-- Minus Button -->
+        <Button
+            style="@style/DetailQuantityButtonStyle"
+            android:id="@+id/detail_plus_quantity"
+            android:layout_alignBaseline="@id/detail_book_quantity"
+            android:layout_toEndOf="@id/detail_book_quantity"
+            android:text="+" />
+    </RelativeLayout>
+
+    <!-- Line between views -->
+    <View style="@style/DetailLineStyle" />
+
+    <!-- Supplier -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/detail_view_standard_margin">
+
+        <!-- Label -->
+        <TextView
+            android:id="@+id/detail_supplier_label"
+            style="@style/DetailLabelStyle"
+            android:layout_alignBaseline="@id/detail_book_supplier"
+            android:text="Supplier" />
+
+        <!-- Field -->
+        <TextView
+            android:id="@+id/detail_book_supplier"
+            style="@style/DetailFieldStyle"
+
+            android:layout_toEndOf="@id/detail_supplier_label" />
+    </RelativeLayout>
+
+    <!-- Line between views -->
+    <View style="@style/DetailLineStyle" />
+
+    <!-- Suppliers phone -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/detail_view_standard_margin">
+
+        <!-- Label -->
+        <TextView
+            android:id="@+id/detail_phone_label"
+            style="@style/DetailLabelStyle"
+            android:layout_alignBaseline="@id/detail_book_phone"
+            android:text="Phone" />
+
+        <!-- Field -->
+        <TextView
+            android:id="@+id/detail_book_phone"
+            style="@style/DetailFieldStyle"
+
+            android:layout_toEndOf="@id/detail_phone_label" />
+
+        <Button
+            style="@style/DetailOrderButtonStyle"
+            android:id="@+id/detail_make_order"
+            android:layout_alignBaseline="@id/detail_book_phone"
+            android:layout_toEndOf="@id/detail_book_phone"
+            android:text="Order" />
+    </RelativeLayout>
 </LinearLayout>
