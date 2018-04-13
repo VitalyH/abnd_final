@@ -28,10 +28,14 @@ import com.example.android.bookstoreapp.data.BookContract.BookEntry;
 public class StoreActivity extends AppCompatActivity implements
         LoaderManager.LoaderCallbacks<Cursor> {
 
-    /** Identifier for the book data loader */
+    /**
+     * Identifier for the book data loader
+     */
     private static final int BOOK_LOADER = 0;
 
-    /** Adapter for the ListView */
+    /**
+     * Adapter for the ListView
+     */
     BookCursorAdapter mCursorAdapter;
 
     @Override
@@ -97,7 +101,7 @@ public class StoreActivity extends AppCompatActivity implements
         //values.put(BookEntry.COLUMN_BOOK_AUTHOR, "Kazuo Ishiguro"); // V2 Uncomment this if BookDb.Helper.DATABASE_VERSION = 2
         values.put(BookEntry.COLUMN_BOOK_PRICE, 7.77);
         values.put(BookEntry.COLUMN_BOOK_QUANTITY, 15);
-        values.put(BookEntry.COLUMN_BOOK_SUPPLIER, "Amazon.com" );
+        values.put(BookEntry.COLUMN_BOOK_SUPPLIER, "Amazon.com");
         values.put(BookEntry.COLUMN_BOOK_PHONE, "555458654");
 
         // Insert a new row for book into the provider using the ContentResolver.
@@ -146,7 +150,7 @@ public class StoreActivity extends AppCompatActivity implements
                 BookEntry._ID,
                 BookEntry.COLUMN_BOOK_NAME,
                 BookEntry.COLUMN_BOOK_PRICE,
-                BookEntry.COLUMN_BOOK_QUANTITY };
+                BookEntry.COLUMN_BOOK_QUANTITY};
 
         // This loader will execute the ContentProvider's query method on a background thread
         return new CursorLoader(this,   // Parent activity context
@@ -168,5 +172,4 @@ public class StoreActivity extends AppCompatActivity implements
         // Callback called when the data needs to be deleted
         mCursorAdapter.swapCursor(null);
     }
-
 }

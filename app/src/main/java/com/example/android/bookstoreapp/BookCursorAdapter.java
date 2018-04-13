@@ -1,10 +1,14 @@
 package com.example.android.bookstoreapp;
 
+import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 
@@ -17,6 +21,16 @@ import com.example.android.bookstoreapp.data.BookContract.BookEntry;
  */
 
 public class BookCursorAdapter extends CursorAdapter {
+
+    /**
+     * Initialize ViewHolder as a cache mechanism for storing Views
+     */
+    public static class ViewHolder {
+        TextView nameView;
+        TextView priceView;
+        TextView quantityView;
+        Button saleButton;
+    }
 
     /**
      * Constructs a new {@link BookCursorAdapter}.
@@ -54,25 +68,58 @@ public class BookCursorAdapter extends CursorAdapter {
      *                correct row.
      */
     @Override
-    public void bindView(View view, Context context, Cursor cursor) {
+    public void bindView(View view, final Context context, Cursor cursor) {
+        // Create new ViewHolder for text views.
+        final ViewHolder holder = new ViewHolder();
+
         // Find individual views that we want to modify in the list item layout
-        TextView nameTextView = view.findViewById(R.id.name);
-        TextView priceTextView =  view.findViewById(R.id.price);
-        TextView quantityTextView =  view.findViewById(R.id.quantity);
+        holder.nameView = view.findViewById(R.id.list_name);
+        holder.priceView = view.findViewById(R.id.list_price);
+        holder.quantityView = view.findViewById(R.id.list_quantity);
 
         // Find the columns of book attributes that we're interested in
+        int idColumnIndex = cursor.getColumnIndex(BookEntry._ID);
         int nameColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_BOOK_NAME);
         int priceColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_BOOK_PRICE);
         int quantityColumnIndex = cursor.getColumnIndex(BookEntry.COLUMN_BOOK_QUANTITY);
 
         // Read the book attributes from the Cursor for the current book
-        String bookName = cursor.getString(nameColumnIndex);
-        String bookPrice = cursor.getString(priceColumnIndex);
-        String bookQuantity = cursor.getString(quantityColumnIndex);
+        final String bookID = cursor.getString(idColumnIndex);
+        final String bookName = cursor.getString(nameColumnIndex);
+        final String bookPrice = cursor.getString(priceColumnIndex);
+        final String bookQuantity = cursor.getString(quantityColumnIndex);
 
         // Update the TextViews with the attributes for the current book
-        nameTextView.setText(bookName);
-        priceTextView.setText(bookPrice);
-        quantityTextView.setText(bookQuantity);
+        holder.nameView.setText(bookName);
+        holder.priceView.setText(bookPrice);
+        holder.quantityView.setText(bookQuantity);
+
+        // Find the Sale button and setup ClickListener
+        holder.saleButton = view.findViewById(R.id.list_sale);
+        holder.saleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Get quantity
+                String quantityString = holder.quantityView.getText().toString();
+                int quantityInt = Integer.parseInt(quantityString);
+
+                // Reduce quantity by one
+                if (quantityInt > 0) {
+                    quantityInt--;
+
+                    // Update quantity in TextView
+                    quantityString = Integer.toString(quantityInt);
+                    holder.quantityView.setText(quantityString);
+
+                    // Update new quantity in DB
+                    Uri currentBookUri =
+                            ContentUris.withAppendedId(BookEntry.CONTENT_URI, Long.valueOf(bookID));
+                    ContentValues values = new ContentValues();
+                    values.put(BookEntry.COLUMN_BOOK_QUANTITY, quantityInt);
+                    context.getContentResolver().update(currentBookUri, values, null, null);
+                }
+            }
+        });
     }
+
 }
