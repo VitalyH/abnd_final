@@ -13,12 +13,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/detail_view_standard_margin">
+        android:padding="@dimen/views_standard_margin">
 
         <!-- Label -->
         <TextView
             android:id="@+id/detail_title_label"
-            style="@style/DetailLabelStyle"
+            style="@style/ViewsLabelStyle"
             android:layout_alignBaseline="@id/detail_book_name"
             android:text="Title" />
 
@@ -36,19 +36,19 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/detail_view_standard_margin">
+        android:padding="@dimen/views_standard_margin">
 
         <!-- Label -->
         <TextView
             android:id="@+id/detail_price_label"
-            style="@style/DetailLabelStyle"
+            style="@style/ViewsLabelStyle"
             android:layout_alignBaseline="@id/detail_book_price"
             android:text="Price" />
 
         <!-- EUR -->
         <TextView
             android:id="@+id/detail_price_label_euro"
-            style="@style/DetailEurStyle"
+            style="@style/EurStyle"
             android:layout_alignBaseline="@id/detail_book_price"
             android:layout_toEndOf="@id/detail_price_label"
             android:text="€" />
@@ -68,12 +68,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/detail_view_standard_margin">
+        android:padding="@dimen/views_standard_margin">
 
         <!-- Label -->
         <TextView
             android:id="@+id/detail_quantity_label"
-            style="@style/DetailLabelStyle"
+            style="@style/ViewsLabelStyle"
             android:layout_alignBaseline="@id/detail_book_quantity"
             android:text="Quantity" />
         <!-- Plus Button -->
@@ -106,12 +106,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/detail_view_standard_margin">
+        android:padding="@dimen/views_standard_margin">
 
         <!-- Label -->
         <TextView
             android:id="@+id/detail_supplier_label"
-            style="@style/DetailLabelStyle"
+            style="@style/ViewsLabelStyle"
             android:layout_alignBaseline="@id/detail_book_supplier"
             android:text="Supplier" />
 
@@ -119,7 +119,6 @@
         <TextView
             android:id="@+id/detail_book_supplier"
             style="@style/DetailFieldStyle"
-
             android:layout_toEndOf="@id/detail_supplier_label" />
     </RelativeLayout>
 
@@ -130,12 +129,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/detail_view_standard_margin">
+        android:padding="@dimen/views_standard_margin">
 
         <!-- Label -->
         <TextView
             android:id="@+id/detail_phone_label"
-            style="@style/DetailLabelStyle"
+            style="@style/ViewsLabelStyle"
             android:layout_alignBaseline="@id/detail_book_phone"
             android:text="Phone" />
 
@@ -143,7 +142,6 @@
         <TextView
             android:id="@+id/detail_book_phone"
             style="@style/DetailFieldStyle"
-
             android:layout_toEndOf="@id/detail_phone_label" />
 
         <Button

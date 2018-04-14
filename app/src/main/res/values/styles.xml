@@ -17,16 +17,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <!-- Style for a category in the editor -->
-    <style name="CategoryStyle">
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:paddingTop">16dp</item>
-        <item name="android:textColor">@color/colorPrimaryText</item>
-        <item name="android:fontFamily">sans-serif-medium</item>
-        <item name="android:textAppearance">?android:textAppearanceSmall</item>
-    </style>
+
 
     <!-- Style for an EditText field in the editor -->
     <style name="EditorFieldStyle">
@@ -34,17 +25,9 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
     </style>
 
-    <!-- Style for the measurement units for an EditText field in the editor -->
-    <style name="EditorUnitsStyle">
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_alignParentRight">true</item>
-        <item name="android:paddingRight">16dp</item>
-        <item name="android:paddingTop">16dp</item>
-        <item name="android:textAppearance">?android:textAppearanceSmall</item>
-    </style>
 
     <!-- Style for a line between views in DetailView -->
     <style name="DetailLineStyle">
@@ -53,8 +36,8 @@
         <item name="android:background">@color/colorAccent</item>
     </style>
 
-    <!-- Style for a labels in the DetailView -->
-    <style name="DetailLabelStyle">
+    <!-- Style for a labels in the views -->
+    <style name="ViewsLabelStyle">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">80dp</item>
         <item name="android:padding">8dp</item>
@@ -77,6 +60,14 @@
         <item name="android:padding">8dp</item>
     </style>
 
+    <!-- Style for a "mandatory" text in activity_editor -->
+    <style name="MandatoryFieldStyle" parent="DetailMainFieldStyle">
+        <item name="android:padding">8dp</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textAppearance">?android:textAppearanceSmall</item>
+    </style>
+
     <!-- Style for a Price value field in the DetailView -->
     <style name="DetailPriceFieldStyle" parent="DetailMainFieldStyle">
         <item name="android:paddingBottom">8dp</item>
@@ -84,8 +75,8 @@
         <item name="android:paddingEnd">8dp</item>
     </style>
 
-    <!-- Styles for a "€" sign in the DetailView -->
-    <style name="DetailEurStyle" parent="DetailMainFieldStyle">
+    <!-- Styles for a "€" sign in the views -->
+    <style name="EurStyle" parent="DetailMainFieldStyle">
         <item name="android:paddingStart">8dp</item>
     </style>
 
@@ -110,7 +101,4 @@
         <item name="android:layout_height">45dp</item>
         <item name="android:layout_width">50dp</item>
     </style>
-
-
-
 </resources>
