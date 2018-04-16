@@ -91,10 +91,23 @@ public class EditorActivity extends AppCompatActivity implements
         }
     };
 
+    /**
+     * Saving a state of mBookHasChanged before rotation of the screen.
+     */
+    @Override
+    public void onSaveInstanceState(final Bundle bundle) {
+        bundle.putBoolean("mBookHasChanged", mBookHasChanged);
+        super.onSaveInstanceState(bundle);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
+        // Restoration the state of mBookHasChanged after screen rotation
+        if (savedInstanceState != null) {
+            mBookHasChanged = savedInstanceState.getBoolean("mBookHasChanged");
+        }
 
         // Examine the intent that was used to launch this activity,
         // in order to figure out if we're creating a new book or editing an existing one.

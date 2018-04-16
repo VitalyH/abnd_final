@@ -70,7 +70,6 @@ public class DetailActivity extends AppCompatActivity implements
      * Helping variables for buttons in this activity
      */
     int mQuantity;                      // Quantity of the books in the store
-    boolean mQuantityChanged = false;   // Check wherever quantity was changed at all
     String mPhoneNumber;                // Phone number for using in the DIAL intent
 
 
@@ -112,9 +111,7 @@ public class DetailActivity extends AppCompatActivity implements
                 Intent intent = new Intent(DetailActivity.this, EditorActivity.class);
                 // Set the URI on the data field of the intent
                 intent.setData(mCurrentBookUri);
-                // Update quantity before exiting
-                updateQuantity();
-                // Launch the {@link EditorActivity} to display the data for the current book.
+                     // Launch the {@link EditorActivity} to display the data for the current book.
                 startActivity(intent);
                 return true;
             // Respond to a click on the "Delete" menu option
@@ -124,8 +121,6 @@ public class DetailActivity extends AppCompatActivity implements
                 return true;
             // Respond to a click on the "Up" arrow button in the app bar
             case android.R.id.home:
-                // Update quantity before exiting
-                updateQuantity();
                 // Continue with navigating up to parent activity
                 // which is the {@link StoreActivity}.
                 NavUtils.navigateUpFromSameTask(DetailActivity.this);
@@ -139,8 +134,6 @@ public class DetailActivity extends AppCompatActivity implements
      */
     @Override
     public void onBackPressed() {
-        // Update quantity before exiting
-        updateQuantity();
         super.onBackPressed();
     }
 
@@ -215,8 +208,9 @@ public class DetailActivity extends AppCompatActivity implements
                 mQuantity++;
                 // Show new quantity
                 mQuantityDetailText.setText(String.valueOf(mQuantity));
-                // Change variable for @Link updateQuantity
-                mQuantityChanged = true;
+                // Update quantity in DB
+                updateQuantity();
+
             }
         });
 
@@ -231,8 +225,8 @@ public class DetailActivity extends AppCompatActivity implements
                     mQuantity--;
                     // Show new quantity
                     mQuantityDetailText.setText(String.valueOf(mQuantity));
-                    // Change variable for @Link updateQuantity
-                    mQuantityChanged = true;
+                    // Update quantity in DB
+                    updateQuantity();
                     // Quantity couldn't be negative, so do not proceed and show user a warning
                 } else {
                     Toast.makeText(getApplicationContext(),
@@ -334,12 +328,6 @@ public class DetailActivity extends AppCompatActivity implements
      * Update quantity of the book
      */
     private void updateQuantity() {
-        // Check if mQuantity was changed
-        if (!mQuantityChanged) {
-            // Since field wasn't modified, we can return early without updating anything
-            return;
-        }
-
         // Read from the field
         // Create a ContentValues object
         ContentValues values = new ContentValues();
