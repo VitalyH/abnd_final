@@ -17,8 +17,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-
-
     <!-- Style for an EditText field in the editor -->
     <style name="EditorFieldStyle">
         <item name="android:layout_height">wrap_content</item>
@@ -28,7 +26,6 @@
         <item name="android:textColor">@color/colorPrimaryText</item>
     </style>
 
-
     <!-- Style for a line between views in DetailView -->
     <style name="DetailLineStyle">
         <item name="android:layout_width">fill_parent</item>
@@ -36,14 +33,25 @@
         <item name="android:background">@color/colorAccent</item>
     </style>
 
-    <!-- Style for a labels in the views -->
-    <style name="ViewsLabelStyle">
+    <!-- Parent style for a labels in the views -->
+    <style name="DefaultViewsLabelStyle">
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_width">80dp</item>
-        <item name="android:padding">8dp</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAppearance">?android:textAppearanceSmall</item>
+    </style>
+
+    <!-- Style for a labels in the List view -->
+    <style name="ListViewLabelStyle" parent="DefaultViewsLabelStyle">
+        <item name="android:paddingEnd">4dp</item>
+        <item name="android:paddingTop">8dp</item>
+    </style>
+
+    <!-- Style for a labels in the Detail/Edit views -->
+    <style name="ViewsLabelStyle" parent="DefaultViewsLabelStyle">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:padding">8dp</item>
     </style>
 
     <!-- Parent style for a main value fields in the DetailView -->
@@ -58,6 +66,12 @@
     <!-- Default style for value fields in the DetailView -->
     <style name="DetailFieldStyle" parent="DetailMainFieldStyle">
         <item name="android:padding">8dp</item>
+    </style>
+
+    <!-- Default style for value fields in the ListView -->
+    <style name="ListFieldStyle" parent="DetailMainFieldStyle">
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:textAppearance">?android:textAppearanceSmall</item>
     </style>
 
     <!-- Style for a "mandatory" text in activity_editor -->
@@ -88,7 +102,7 @@
         <item name="android:textColor">@color/colorButtonsText</item>
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
         <item name="android:background">@drawable/button</item>
-     </style>
+    </style>
 
     <!-- Style for an Order button in DetailView -->
     <style name="DetailOrderButtonStyle" parent="ButtonsStyle">
