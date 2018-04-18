@@ -43,16 +43,6 @@ public class StoreActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store);
 
-        // Setup FAB to open EditorActivity
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(StoreActivity.this, EditorActivity.class);
-                startActivity(intent);
-            }
-        });
-
         // Find the ListView which will be populated with the book data
         ListView bookListView = findViewById(R.id.list);
 
@@ -98,7 +88,7 @@ public class StoreActivity extends AppCompatActivity implements
         // Create a ContentValues object with a dummy book (the good one, btw).
         ContentValues values = new ContentValues();
         values.put(BookEntry.COLUMN_BOOK_NAME, "The Remains of the Day");
-        //values.put(BookEntry.COLUMN_BOOK_AUTHOR, "Kazuo Ishiguro"); // V2 Uncomment this if BookDb.Helper.DATABASE_VERSION = 2
+        //values.put(BookEntry.COLUMN_BOOK_AUTHOR, "Kazuo Ishiguro"); // Uncomment this if BookDb.Helper.DATABASE_VERSION = 2
         values.put(BookEntry.COLUMN_BOOK_PRICE, 7.77);
         values.put(BookEntry.COLUMN_BOOK_QUANTITY, 15);
         values.put(BookEntry.COLUMN_BOOK_SUPPLIER, "Amazon.com");
@@ -131,6 +121,11 @@ public class StoreActivity extends AppCompatActivity implements
     public boolean onOptionsItemSelected(MenuItem item) {
         // User clicked on a menu option in the app bar overflow menu
         switch (item.getItemId()) {
+            // Respond to a click on the "Add new book" menu option
+            case R.id.action_new_book:
+                Intent intent = new Intent(StoreActivity.this, EditorActivity.class);
+                startActivity(intent);
+                return true;
             // Respond to a click on the "Insert dummy data" menu option
             case R.id.action_insert_dummy_data:
                 insertBook();

@@ -19,35 +19,16 @@
         android:layout_centerInParent="true">
 
             <TextView
+            style="@style/EmptyViewTop"
             android:id="@+id/empty_title_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="sans-serif-medium"
-            android:paddingTop="16dp"
             android:text="@string/empty_view_title_text"
-            android:textAppearance="?android:textAppearanceMedium"/>
+            />
 
         <TextView
+            style="@style/EmptyView"
             android:id="@+id/empty_subtitle_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_below="@+id/empty_title_text"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="sans-serif"
-            android:paddingTop="8dp"
             android:text="@string/empty_view_subtitle_text"
-            android:textAppearance="?android:textAppearanceSmall"
-            android:textColor="#A2AAB0"/>
+            />
     </RelativeLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="250dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/ic_book"/>
-
 </RelativeLayout>
