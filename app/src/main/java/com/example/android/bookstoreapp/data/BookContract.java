@@ -98,14 +98,11 @@ public class BookContract {
          */
         public final static String COLUMN_BOOK_PHONE = "phone";
 
-        /**
-         * Name of the author of the book. Added in v2 for the test purposes.
-         * Type: TEXT
-         */
-        public final static String COLUMN_BOOK_AUTHOR = "author";
-
+        // Uncomment this in V2.
+//        /**
+//         * Name of the author of the book. Added in v2 for the test purposes.
+//         * Type: TEXT
+//         */
+//        public final static String COLUMN_BOOK_AUTHOR = "author";
     }
-
-
-
 }

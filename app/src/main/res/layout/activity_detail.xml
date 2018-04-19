@@ -6,21 +6,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="@dimen/activity_margin"
+    android:padding="@dimen/medium_margin"
     tools:context=".DetailActivity">
 
     <!-- Title -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/views_standard_margin">
+        android:padding="@dimen/standard_margin">
 
         <!-- Label -->
         <TextView
             android:id="@+id/detail_title_label"
             style="@style/ViewsLabelStyle"
             android:layout_alignBaseline="@id/detail_book_name"
-            android:text="Title" />
+            android:text="@string/book_title" />
 
         <!-- Field -->
         <TextView
@@ -36,14 +36,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/views_standard_margin">
+        android:padding="@dimen/standard_margin">
 
         <!-- Label -->
         <TextView
             android:id="@+id/detail_price_label"
             style="@style/ViewsLabelStyle"
             android:layout_alignBaseline="@id/detail_book_price"
-            android:text="Price" />
+            android:text="@string/book_price" />
 
         <!-- EUR -->
         <TextView
@@ -51,7 +51,7 @@
             style="@style/EurStyle"
             android:layout_alignBaseline="@id/detail_book_price"
             android:layout_toEndOf="@id/detail_price_label"
-            android:text="€" />
+            android:text="@string/book_eur" />
 
 
         <!-- Field -->
@@ -68,21 +68,21 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/views_standard_margin">
+        android:padding="@dimen/standard_margin">
 
         <!-- Label -->
         <TextView
             android:id="@+id/detail_quantity_label"
             style="@style/ViewsLabelStyle"
             android:layout_alignBaseline="@id/detail_book_quantity"
-            android:text="Quantity" />
+            android:text="@string/book_quantity" />
         <!-- Plus Button -->
         <Button
             style="@style/DetailQuantityButtonStyle"
             android:id="@+id/detail_minus_quantity"
             android:layout_alignBaseline="@id/detail_book_quantity"
             android:layout_toEndOf="@id/detail_quantity_label"
-            android:text="-" />
+            android:text="@string/book_minus" />
 
         <!-- Field -->
         <TextView
@@ -96,7 +96,7 @@
             android:id="@+id/detail_plus_quantity"
             android:layout_alignBaseline="@id/detail_book_quantity"
             android:layout_toEndOf="@id/detail_book_quantity"
-            android:text="+" />
+            android:text="@string/book_plus" />
     </RelativeLayout>
 
     <!-- Line between views -->
@@ -106,14 +106,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/views_standard_margin">
+        android:padding="@dimen/standard_margin">
 
         <!-- Label -->
         <TextView
             android:id="@+id/detail_supplier_label"
             style="@style/ViewsLabelStyle"
             android:layout_alignBaseline="@id/detail_book_supplier"
-            android:text="Supplier" />
+            android:text="@string/book_supplier" />
 
         <!-- Field -->
         <TextView
@@ -129,14 +129,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/views_standard_margin">
+        android:padding="@dimen/standard_margin">
 
         <!-- Label -->
         <TextView
             android:id="@+id/detail_phone_label"
             style="@style/ViewsLabelStyle"
             android:layout_alignBaseline="@id/detail_book_phone"
-            android:text="Phone" />
+            android:text="@string/book_phone" />
 
         <!-- Field -->
         <TextView
@@ -149,6 +149,6 @@
             android:id="@+id/detail_make_order"
             android:layout_alignBaseline="@id/detail_book_phone"
             android:layout_toEndOf="@id/detail_book_phone"
-            android:text="Order" />
+            android:text="@string/book_order" />
     </RelativeLayout>
 </LinearLayout>

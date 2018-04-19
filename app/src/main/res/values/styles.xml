@@ -29,7 +29,7 @@
     <!-- Style for a line between views in DetailView -->
     <style name="DetailLineStyle">
         <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">2dp</item>
+        <item name="android:layout_height">@dimen/line_margin</item>
         <item name="android:background">@color/colorAccent</item>
     </style>
 
@@ -44,14 +44,14 @@
 
     <!-- Style for a labels in the List view -->
     <style name="ListViewLabelStyle" parent="DefaultViewsLabelStyle">
-        <item name="android:paddingEnd">4dp</item>
-        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingEnd">@dimen/small_margin</item>
+        <item name="android:paddingTop">@dimen/standard_margin</item>
     </style>
 
     <!-- Style for a labels in the Detail/Edit views -->
     <style name="ViewsLabelStyle" parent="DefaultViewsLabelStyle">
-        <item name="android:layout_width">80dp</item>
-        <item name="android:padding">8dp</item>
+        <item name="android:layout_width">@dimen/label_width</item>
+        <item name="android:padding">@dimen/standard_margin</item>
     </style>
 
     <!-- Parent style for a main value fields in the DetailView -->
@@ -65,18 +65,18 @@
 
     <!-- Default style for value fields in the DetailView -->
     <style name="DetailFieldStyle" parent="DetailMainFieldStyle">
-        <item name="android:padding">8dp</item>
+        <item name="android:padding">@dimen/standard_margin</item>
     </style>
 
     <!-- Default style for value fields in the ListView -->
     <style name="ListFieldStyle" parent="DetailMainFieldStyle">
-        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingTop">@dimen/standard_margin</item>
         <item name="android:textAppearance">?android:textAppearanceSmall</item>
     </style>
 
     <!-- Style for a "mandatory" text in activity_editor -->
     <style name="MandatoryFieldStyle" parent="DetailMainFieldStyle">
-        <item name="android:padding">8dp</item>
+        <item name="android:padding">@dimen/standard_margin</item>
         <item name="android:textStyle">italic</item>
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:textAppearance">?android:textAppearanceSmall</item>
@@ -84,20 +84,20 @@
 
     <!-- Style for a Price value field in the DetailView -->
     <style name="DetailPriceFieldStyle" parent="DetailMainFieldStyle">
-        <item name="android:paddingBottom">8dp</item>
-        <item name="android:paddingTop">8dp</item>
-        <item name="android:paddingEnd">8dp</item>
+        <item name="android:paddingBottom">@dimen/standard_margin</item>
+        <item name="android:paddingTop">@dimen/standard_margin</item>
+        <item name="android:paddingEnd">@dimen/standard_margin</item>
     </style>
 
     <!-- Styles for a "€" sign in the views -->
     <style name="EurStyle" parent="DetailMainFieldStyle">
-        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingStart">@dimen/standard_margin</item>
     </style>
 
     <!-- Parent style for a buttons -->
     <style name="ButtonsStyle">
-        <item name="android:layout_height">45dp</item>
-        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">@dimen/default_button_height</item>
+        <item name="android:layout_width">@dimen/default_button_width</item>
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textColor">@color/colorButtonsText</item>
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
@@ -106,14 +106,12 @@
 
     <!-- Style for an Order button in DetailView -->
     <style name="DetailOrderButtonStyle" parent="ButtonsStyle">
-        <item name="android:layout_height">45dp</item>
-        <item name="android:layout_width">70dp</item>
+         <item name="android:layout_width">@dimen/order_button_width</item>
     </style>
 
     <!-- Style for a Quantity buttons in DetailView -->
     <style name="DetailQuantityButtonStyle" parent="ButtonsStyle">
-        <item name="android:layout_height">45dp</item>
-        <item name="android:layout_width">50dp</item>
+         <item name="android:layout_width">@dimen/quantity_button_width</item>
     </style>
 
     <!-- Styles for an empty views in activity_store -->
@@ -122,14 +120,12 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:fontFamily">sans-serif</item>
-        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingTop">@dimen/standard_margin</item>
         <item name="android:textAppearance">?android:textAppearanceSmall</item>
     </style>
 
     <style name="EmptyViewTop" parent="EmptyView">
-        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingTop">@dimen/medium_margin</item>
         <item name="android:textAppearance">?android:textAppearanceMedium</item>
     </style>
-
-
 </resources>

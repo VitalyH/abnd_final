@@ -6,21 +6,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="@dimen/activity_margin"
+    android:padding="@dimen/medium_margin"
     tools:context=".EditorActivity">
 
     <!-- Title -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/views_standard_margin">
+        android:padding="@dimen/standard_margin">
 
         <!-- Label -->
         <TextView
             android:id="@+id/edit_title_label"
             style="@style/ViewsLabelStyle"
             android:layout_alignBaseline="@id/edit_book_name"
-            android:text="Title" />
+            android:text="@string/book_title" />
 
         <!-- Field -->
         <EditText
@@ -35,14 +35,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/views_standard_margin">
+        android:padding="@dimen/standard_margin">
 
         <!-- Label -->
         <TextView
             android:id="@+id/edit_price_label"
             style="@style/ViewsLabelStyle"
             android:layout_alignBaseline="@id/edit_book_price"
-            android:text="Price" />
+            android:text="@string/book_price" />
 
         <!-- EUR -->
         <TextView
@@ -50,7 +50,7 @@
             style="@style/EurStyle"
             android:layout_alignBaseline="@id/edit_book_price"
             android:layout_toEndOf="@id/edit_price_label"
-            android:text="€" />
+            android:text="@string/book_eur" />
 
 
         <!-- Field -->
@@ -66,14 +66,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/views_standard_margin">
+        android:padding="@dimen/standard_margin">
 
         <!-- Label -->
         <TextView
             android:id="@+id/edit_quantity_label"
             style="@style/ViewsLabelStyle"
             android:layout_alignBaseline="@id/edit_book_quantity"
-            android:text="Quantity" />
+            android:text="@string/book_quantity" />
 
         <!-- Field -->
         <EditText
@@ -89,14 +89,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/views_standard_margin">
+        android:padding="@dimen/standard_margin">
 
         <!-- Label -->
         <TextView
             android:id="@+id/edit_supplier_label"
             style="@style/ViewsLabelStyle"
             android:layout_alignBaseline="@id/edit_book_supplier"
-            android:text="Supplier" />
+            android:text="@string/book_supplier" />
 
         <!-- Field -->
         <EditText
@@ -111,14 +111,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/views_standard_margin">
+        android:padding="@dimen/standard_margin">
 
         <!-- Label -->
         <TextView
             android:id="@+id/edit_phone_label"
             style="@style/ViewsLabelStyle"
             android:layout_alignBaseline="@id/edit_book_phone"
-            android:text="Phone" />
+            android:text="@string/book_phone" />
 
         <!-- Field -->
         <EditText
@@ -131,5 +131,5 @@
 
     <TextView
         style="@style/MandatoryFieldStyle"
-        android:text="Please fill in all fields!" />
+        android:text="@string/hint_fill" />
 </LinearLayout>

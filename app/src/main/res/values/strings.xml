@@ -1,11 +1,16 @@
 <resources>
+    <!-- App name -->
     <string name="app_name">Book Store App</string>
+
+    <!-- Top menu and titles -->
     <string name="action_insert_dummy_data">Insert Dummy Data</string>
     <string name="action_new_book">Add Book</string>
     <string name="action_delete_all_entries">Delete All</string>
     <string name="editor_activity_title_new_book">Add a Book</string>
     <string name="editor_activity_title_edit_book">Edit Book</string>
     <string name="detail_activity_title">Book\'s Details</string>
+
+    <!-- Errors and Toast messages -->
     <string name="detail_activity_bellow_zero">Quantity should be > 0!</string>
     <string name="detail_activity_no_phone">No phone app found! Get one from the Play Store!</string>
     <string name="editor_insert_book_successful">Book saved</string>
@@ -13,7 +18,14 @@
     <string name="editor_update_book_successful">Book updated</string>
     <string name="editor_update_book_failed">Error with updating book</string>
     <string name="editor_delete_book_successful">Book deleted</string>
-    <string name="editor_delete_book_failed">Error with deleting pet</string>
+    <string name="editor_delete_book_failed">Error with deleting book</string>
+    <string name="error_empty_field">Please fill in all fields!</string>
+
+    <!-- Empty view -->
+    <string name="empty_view_title_text">It\'s a bit empty here&#8230;</string>
+    <string name="empty_view_subtitle_text">Get started by adding a book via an option on top!</string>
+
+    <!-- Pop-up dialogs -->
     <string name="unsaved_changes_dialog_msg">Discard your changes and quit editing?</string>
     <string name="discard">Discard</string>
     <string name="keep_editing">Keep Editing</string>
@@ -23,20 +35,26 @@
     <string name="action_save">Save</string>
     <string name="action_delete">Delete</string>
     <string name="action_edit">Edit</string>
-    <string name="category_overview">Book</string>
-    <string name="category_numbers">Numbers</string>
-    <string name="category_supplier">Supplier</string>
+
+    <!-- Hints in Add/Edit -->
     <string name="hint_book_name">Book title</string>
     <string name="hint_book_price">Price</string>
     <string name="hint_book_quantity">Quantity</string>
     <string name="hint_book_supplier">Supplier name</string>
     <string name="hint_book_phone">Supplier phone</string>
-    <string name="unit_book_price">EUR</string>
-    <string name="unit_book_quantity">Units</string>
-    <string name="error_empty_field">Please fill in all fields!</string>
-    <string name="empty_view_title_text">It\'s a bit empty here&#8230;</string>
-    <string name="empty_view_subtitle_text">Get started by adding a book via an option on top!</string>
+    <string name="hint_fill">Please fill in all fields!</string>
 
-    <!-- Detail View Strings -->
-
-</resources>
+    <!-- Book' attributes in Views -->
+    <string name="book_title">Title</string>
+    <string name="book_price">Price</string>
+    <string name="book_price_colon">Price:</string>
+    <string name="book_eur">€</string>
+    <string name="book_quantity">Quantity</string>
+    <string name="book_quantity_colon">Quantity:</string>
+    <string name="book_plus">+</string>
+    <string name="book_minus">-</string>
+    <string name="book_supplier">Supplier</string>
+    <string name="book_phone">Phone</string>
+    <string name="book_order">Order</string>
+    <string name="book_sale">Sale</string>
+ </resources>
